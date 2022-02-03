@@ -6,7 +6,8 @@ import (
 )
 
 func GetNowTime() time.Time {
-	return time.Now()
+	location, _ := time.LoadLocation("Asia/Shanghai") //此处利用时区设定
+	return time.Now().In(location)
 }
 func GetcalculateTime(currentTimer time.Time, d string) (time.Time, error) {
 	duration, err := time.ParseDuration(d)
